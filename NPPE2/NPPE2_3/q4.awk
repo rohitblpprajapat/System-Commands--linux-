@@ -11,9 +11,18 @@
 
 
 BEGIN {
-    FS = ','   #fiels saperator here ","
+    FS = ","  # Field separator here is a comma
 }
 
 {
-    if ( $4 > max[])
+    if ($4 > max[$1]) {
+        max[$1] = $4
+        max_student[$1] = $2
+    }
+}
+
+END {
+    for (i in max_student) {
+        print max_student[i]
+    }
 }
